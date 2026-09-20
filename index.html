@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد رفعت | Mohamed Refaat — Creative Designer & Developer</title>
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta name="description" content="البورتفوليو الشخصي لمحمد رفعت - مصمم جرافيك، مصمم واجهات واجهة وتجربة المستخدم، ومطور ويب. أقدم تصميمات فاخرة وتجارب رقمية استثنائية.">
+    <meta property="og:title" content="محمد رفعت | Mohamed Refaat — Luxury Portfolio">
+    <meta property="og:description" content="Creative Graphic & Web Designer Portfolio">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts: Outfit (English) & Tajawal (Arabic) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#07080c',
+                        darker: '#040508',
+                        cardBg: 'rgba(18, 20, 29, 0.65)',
+                        glowPrimary: '#6366f1',
+                        glowSecondary: '#a855f7',
+                        accentGold: '#eab308'
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #07080c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+
+        /* Glassmorphism & Borders */
+        .glass-panel {
+            background: rgba(18, 20, 29, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Ambient Orbs Animation */
+        @keyframes floatGlow {
+            0%, 100% {
+                transform: translate(0px, 0px) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(30px, -40px) scale(1.15);
+                opacity: 0.8;
+            }
+        }
+
+        .glow-orb-1 {
+            animation: floatGlow 12s infinite ease-in-out;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        .glow-orb-2 {
+            animation: floatGlow 16s infinite ease-in-out reverse;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        /* Text Shimmer Effect */
+        .shimmer-text {
+            background: linear-gradient(90deg, #ffffff 0%, #a5b4fc 25%, #ffffff 50%, #e9d5ff 75%, #ffffff 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 6s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Custom Desktop Cursor */
+        @media (pointer: fine) {
+            body {
+                cursor: none;
+            }
+            .custom-cursor {
+                pointer-events: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 9999;
+                border-radius: 50%;
+                transition: transform 0.15s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+            }
+            .cursor-dot {
+                width: 8px;
+                height: 8px;
+                background-color: #6366f1;
+            }
+            .cursor-outline {
+                width: 36px;
+                height: 36px;
+                border: 1px solid rgba(168, 85, 247, 0.6);
+                transition: transform 0.25s ease-out;
+            }
+        }
+
+        /* Subtle Background Grid Pattern */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        /* Fade-in scroll reveal classes */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-dark text-slate-100 font-tajawal selection:bg-indigo-600 selection:text-white overflow-x-hidden relative min-h-screen">
+
+    <div id="cursor-dot" class="custom-cursor cursor-dot hidden md:block"></div>
+    <div id="cursor-outline" class="custom-cursor cursor-outline hidden md:block"></div>
+
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full glow-orb-1 pointer-events-none z-0 blur-3xl"></div>
+    <div class="fixed bottom-1/4 right-10 w-[400px] h-[400px] rounded-full glow-orb-2 pointer-events-none z-0 blur-3xl"></div>
+
+    <div id="loader" class="fixed inset-0 bg-darker z-50 flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="relative flex items-center justify-center">
+            <div class="w-20 h-20 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin"></div>
+            <span class="absolute font-outfit text-xl font-bold tracking-widest text-indigo-400">MR</span>
+        </div>
+        <div class="mt-4 font-outfit text-sm tracking-widest text-gray-400 uppercase animate-pulse" id="loader-title">
+            Loading Experience...
+        </div>
+    </div>
+
+    <header class="fixed top-4 inset-x-0 z-40 px-4 md:px-8 max-w-5xl mx-auto">
+        <nav class="glass-panel rounded-2xl px-6 py-3 flex items-center justify-between shadow-2xl">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white font-outfit font-extrabold text-lg shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition-transform">
+                    MR
+                </div>
+                <span class="font-outfit font-bold text-lg tracking-wider text-white group-hover:text-indigo-400 transition-colors hidden sm:inline" id="nav-brand-name">
+                    M. REFAAT
+                </span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <li><a href="#home" class="hover:text-indigo-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[2px] after:bg-indigo-500 hover:after:w-full after:transition-all">الرئيسية</a></li>
+                <li><a href="#about" class="hover:text-indigo-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[2px] after:bg-indigo-500 hover:after:w-full after:transition-all">من أنا</a></li>
+                <li><a href="#skills" class="hover:text-indigo-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[2px] after:bg-indigo-500 hover:after:w-full after:transition-all">المهارات</a></li>
+                <li><a href="#work" class="hover:text-indigo-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[2px] after:bg-indigo-500 hover:after:w-full after:transition-all">المشاريع</a></li>
+                <li><a href="#contact" class="hover:text-indigo-400 transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[2px] after:bg-indigo-500 hover:after:w-full after:transition-all">التواصل</a></li>
+            </ul>
+
+            <!-- Header Action Button -->
+            <a id="nav-cta-btn" href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md hover:shadow-indigo-500/25 hover:opacity-95 transition-all active:scale-95">
+                <span>تواصل معي</span>
+                <i class="fa-solid fa-paper-plane text-[10px]"></i>
+            </a>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden text-gray-300 hover:text-white p-2 rounded-lg focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-drawer" class="hidden md:hidden glass-panel mt-2 rounded-2xl p-6 shadow-2xl transition-all border border-indigo-500/20">
+            <ul class="flex flex-col gap-4 font-medium text-gray-200 text-center">
+                <li><a href="#home" class="mobile-nav-link block py-2 hover:text-indigo-400 transition-colors">الرئيسية</a></li>
+                <li><a href="#about" class="mobile-nav-link block py-2 hover:text-indigo-400 transition-colors">من أنا</a></li>
+                <li><a href="#skills" class="mobile-nav-link block py-2 hover:text-indigo-400 transition-colors">المهارات</a></li>
+                <li><a href="#work" class="mobile-nav-link block py-2 hover:text-indigo-400 transition-colors">المشاريع</a></li>
+                <li><a href="#contact" class="mobile-nav-link block py-2 hover:text-indigo-400 transition-colors">التواصل</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home" class="relative min-h-screen pt-32 pb-16 flex items-center justify-center px-4 z-10">
+        <div class="max-w-4xl mx-auto text-center flex flex-col items-center">
+            
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel border border-indigo-500/30 text-indigo-300 text-xs font-medium mb-8 animate-bounce">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span id="hero-badge">متاح للعمل الحر والمشاريع الجديدة</span>
+            </div>
+
+            <!-- Main Title (Arabic & English) -->
+            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-4 leading-tight">
+                <span id="hero-name-ar" class="shimmer-text block mb-1">محمد رفعت</span>
+                <span id="hero-name-en" class="font-outfit text-2xl sm:text-4xl md:text-5xl font-bold text-gray-400 tracking-widest uppercase block">MOHAMED REFAAT</span>
+            </h1>
+
+            <!-- Job Title Subheading -->
+            <h2 id="hero-job" class="text-lg sm:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-indigo-400 mt-2 mb-6">
+                Graphic Designer & UI/UX Specialist
+            </h2>
+
+            <!-- Short Bio Intro -->
+            <p id="hero-bio" class="text-gray-400 text-sm sm:text-base max-w-2xl leading-relaxed mb-10 px-2">
+                أصمم تجارب بصريـة استثنائية وهويات بصرية مبتكرة تترك انطباعاً لا يُنسى. أجمع بين الحس الفني الرفيع وأحدث تقنيات التصميم لتجسيد رؤيتك الرقمية.
+            </p>
+
+            <!-- Call to Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                <a href="#work" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 text-white font-bold text-sm tracking-wider shadow-lg shadow-indigo-600/30 hover:shadow-indigo-500/50 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3">
+                    <span>استعرض ألعالي</span>
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-panel text-white font-semibold text-sm hover:border-indigo-500/50 hover:bg-white/5 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                    <span>تواصل معي</span>
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- Quick Stats Row -->
+            <div id="hero-stats" class="grid grid-cols-2 sm:grid-cols-3 gap-6 mt-16 pt-8 border-t border-white/10 w-full max-w-xl">
+                <!-- Injected dynamically from JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-4 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-indigo-400 text-xs font-bold font-outfit uppercase tracking-widest">About Me</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 text-white">نبذة شخصية</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- About Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <!-- Profile Image / Avatar Box -->
+                <div class="md:col-span-5 flex justify-center reveal-on-scroll">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-75 transition duration-500"></div>
+                        <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-3xl overflow-hidden glass-card p-2">
+                            <img id="about-image" src="https://placehold.co/600x600/12141d/6366f1?text=Mohamed+Refaat" alt="Mohamed Refaat Profile" class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x600/12141d/ffffff?text=MR';">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Description -->
+                <div class="md:col-span-7 space-y-6 reveal-on-scroll">
+                    <h3 id="about-heading" class="text-2xl font-bold text-white">
+                        مصمم شغوف بابتكار حلول بصريّة راقية.
+                    </h3>
+                    <p id="about-text-1" class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        أعمل في مجال التصميم منذ سنوات، وقمت بإنشاء العديد من المشاريع الناجحة لمختلف العملاء والشركات. أركز دائماً على الدقة والجماليات مع الاهتمام بأدق التفاصيل لتسليم هويات بصرية وتصاميم واجهات تلبي تطلعاتك.
+                    </p>
+                    <p id="about-text-2" class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        هدف هو تحويل الأفكار المعقدة إلى تصاميم بسيطة وجميلة وسهلة الاستخدام تمنح علاماتكم التجارية حضوراً قادراً على المنافسة.
+                    </p>
+
+                    <!-- Features/Highlights list -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                                <i class="fa-solid fa-palette text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-gray-400">التخصص</h4>
+                                <p class="text-sm font-semibold text-white">تصميم إبداعي</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3 glass-card p-3 rounded-xl">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+                                <i class="fa-solid fa-award text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs text-gray-400">الجودة</h4>
+                                <p class="text-sm font-semibold text-white">معايير عالمية</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 px-4 relative z-10 bg-darker/40">
+        <div class="max-w-5xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-indigo-400 text-xs font-bold font-outfit uppercase tracking-widest">Expertise</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 text-white">المهارات والبرامج</h2>
+                <div class="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Skills Cards Grid -->
+            <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 reveal-on-scroll">
+                <!-- Dynamic insertion from portfolioData.skills -->
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="py-20 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-indigo-400 text-xs font-bold font-outfit uppercase tracking-widest">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 text-white">معرض الأعمال المميزة</h2>
+                <p class="text-gray-400 text-sm mt-2">نماذج من أحدث المشاريع والتصاميم التي قمت بتنفيذها</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic insertion from portfolioData.projects -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-4 relative z-10 bg-darker/60">
+        <div class="max-w-4xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal-on-scroll">
+                <span class="text-indigo-400 text-xs font-bold font-outfit uppercase tracking-widest">Get In Touch</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 text-white">تواصل معي مباشرة</h2>
+                <p class="text-gray-400 text-sm mt-2">هل لديك مشروع جديد أو فكرة تود مناقشتها؟ يسعدني التواصل معك</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Social Links Grid -->
+            <div id="contact-links-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 reveal-on-scroll">
+                <!-- Dynamic Contact Cards -->
+            </div>
+
+            <!-- Direct Email Callout Card -->
+            <div class="glass-card p-8 rounded-3xl text-center border border-indigo-500/20 reveal-on-scroll">
+                <h3 class="text-xl font-bold text-white mb-2">أو أرسل لي بريداً إلكترونياً</h3>
+                <p class="text-gray-400 text-sm mb-6">أجيب عادةً خلال ساعات قليلة</p>
+                <div class="inline-flex items-center gap-3 p-3 rounded-2xl bg-dark/80 border border-white/10 max-w-md w-full justify-between">
+                    <span id="contact-email-text" class="text-indigo-300 font-outfit text-sm truncate px-2">email@example.com</span>
+                    <button id="copy-email-btn" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all active:scale-95 shrink-0">
+                        نسخ البريد
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 px-4 border-t border-white/5 relative z-10 text-center text-gray-500 text-sm">
+        <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-outfit text-xs font-bold">
+                    MR
+                </div>
+                <span class="font-outfit font-semibold text-gray-300 text-xs">Mohamed Refaat</span>
+            </div>
+            
+            <p id="footer-copyright" class="text-xs">
+                © 2026 جميع الحقوق محفوظة — Mohamed Refaat
+            </p>
+
+            <div id="footer-socials" class="flex items-center gap-4 text-gray-400">
+                <!-- Footer dynamic icons -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-panel px-6 py-3 rounded-2xl shadow-2xl border border-indigo-500/40 text-indigo-200 text-xs sm:text-sm font-semibold opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message">تم النسخ بنجاح!</span>
+    </div>
+
+    <script>
+        /* =========================================================================
+         * ⚙️ CENTRALIZED PORTFOLIO CONFIGURATION DATA (سهولة التعديل الكاملة)
+         * يمكنك تعديل جميع النصوص والروابط والمشاريع والمهارات من هذا الكائن بسهولة
+         * ========================================================================= */
+        const portfolioData = {
+            // البيانات الشخصية العامة
+            nameArabic: "محمد رفعت",
+            nameEnglish: "Mohamed Rfat",
+            jobTitle: "Graphic Designer & Web Designer",
+            bio: "أصمم تجارب بصرية استثنائية وهويات بصرية مبتكرة تترك انطباعاً لا يُنسى. أجمع بين الحس الفني الرفيع وأحدث تقنيات التصميم لتجسيد رؤيتك الرقمية.",
+            
+            // الصورة الشخصية (يمكن وضع رابط أو اسم الصورة داخل مجلد assets/profile.jpg)
+            profileImage: "https://placehold.co/600x600/12141d/6366f1?text=Mohamed+Refaat",
+            
+            // إحصائيات سريعة في الهيرو
+            stats: [
+                { label: "سنوات خبرة", value: "+4" },
+                { label: "مشروع مكتمل", value: "+80" },
+                { label: "عميل سعيد", value: "+45" }
+            ],
+
+            // قسم من أنا
+            aboutHeading: "مصمم شغوف بابتكار حلول بصريّة راقية لمختلف المنصات.",
+            aboutText1: "أعمل في مجال تصميم الجرافيك وتصميم واجهات المستخدم (UI/UX) منذ سنوات. قمت خلالها بالعمل مع عدة علامات تجارية وأفراد لتحويل أفكارهم إلى تصاميم إبداعية تدعم أهدافهم وتلفت الأنظار.",
+            aboutText2: "أحرص دائماً على تطبيق أحدث اتجاهات التصميم العالمية مع المحافظة على الهوية الفريدة لكل مشروع.",
+
+            // روابط التواصل الاجتماعي والاتصال
+            email: "mohamed.refaat.design@gmail.com",
+            whatsapp: "https://wa.me/201021207046",
+            facebook: "https://facebook.com",
+            instagram: "https://instagram.com",
+            behance: "https://behance.net",
+
+            // قائمة المهارات والبرامج
+            skills: [
+                { name: "Photoshop", icon: "fa-solid fa-image", level: "متقدم" },
+                { name: "Illustrator", icon: "fa-solid fa-bezier-curve", level: "متقدم" },
+                { name: "Canva", icon: "fa-solid fa-wand-magic-sparkles", level: "احترافي" },
+                { name: "UI/UX Design", icon: "fa-solid fa-object-group", level: "متخصص" },
+                { name: "Figma", icon: "fa-solid fa-pen-nib", level: "متقدم" },
+                { name: "Branding", icon: "fa-solid fa-copyright", level: "شامل" },
+                { name: "HTML & CSS", icon: "fa-brands fa-html5", level: "أساسي" },
+                { name: "Social Media Posts", icon: "fa-solid fa-hashtag", level: "مبتكر" }
+            ],
+
+            /* =========================================================================
+             * 🎨 قائمة المشاريع (Projects List)
+             * لإضافة مشروع جديد: فقط انسخ أحد الأغراض المكتوبة وأضف بيانات مشروعك الجديد
+             * ========================================================================= */
+            projects: [
+                {
+                    title: "الهوية البصرية لعلامة تجارية فاخرة",
+                    category: "Branding / Graphic",
+                    image: "https://placehold.co/800x500/12141d/6366f1?text=Luxury+Branding",
+                    description: "تصميم هوية بصرية كاملة تشمل الشعارات والألوان والمطبوعات لشركة استشارات استثمارية.",
+                    link: "https://behance.net"
+                },
+                {
+                    title: "تصميم واجهة تطبيق تسوق أونلاين",
+                    category: "UI/UX Design",
+                    image: "https://placehold.co/800x500/181a26/a855f7?text=E-Commerce+App+UI",
+                    description: "تجربة واجهة مستخدم حديثة وسلسة لتطبيق هاتف مخصص للموضة والأزياء.",
+                    link: "https://behance.net"
+                },
+                {
+                    title: "حملة إعلانية لوسائل التواصل الاجتماعي",
+                    category: "Social Media",
+                    image: "https://placehold.co/800x500/0f172a/38bdf8?text=Social+Media+Campaign",
+                    description: "سلسلة تصاميم سوشيال ميديا جذابة لإطلاق منتج جديد حققت انتشاراً واسعاً.",
+                    link: "https://behance.net"
+                },
+                {
+                    title: "تصميم موقع إلكتروني شخصي",
+                    category: "Web Design",
+                    image: "https://placehold.co/800x500/1e1b4b/818cf8?text=Portfolio+Web+Design",
+                    description: "واجهة موقع إلكتروني فاخر بتأثيرات بصرية مظلمة وملاءمة تامة للهواتف.",
+                    link: "https://behance.net"
+                },
+                {
+                    title: "شعارات وايقونات مبتكرة",
+                    category: "Logo Design",
+                    image: "https://placehold.co/800x500/172554/60a5fa?text=Creative+Logos",
+                    description: "مجموعة من الشعارات المبتكرة المصممة وفق القواعد الفنية والنمط المينيمال العصري.",
+                    link: "assets/project-video.mp4"
+                },
+                {
+                    id: 4,                                    // رقم مميز للمشروع (احرص على ألا يتكرر)
+                    title: "مشروع فيديو",
+    category: "Motion Graphics",
+    type: "video",
+    media: "assets/project-video.mp4", // 👈 تأكد أن المسار يطابق مكان الفيديو
+    description: "وصف المشروع...",
+    link: "assets/project-video.mp4"   // 👈 رابط الزر لتشغيل الفيديو في تبويب جديد بدلاً من Example Domain
+                }
+            ]
+        };
+
+        /* =========================================================================
+         * 🚀 PAGE INITIALIZATION & DOM RENDERING
+         * ========================================================================= */
+        document.addEventListener("DOMContentLoaded", () => {
+            renderPortfolioData();
+            initLoader();
+            initCustomCursor();
+            initScrollReveal();
+            initMobileMenu();
+        });
+
+        // 1. Render all Data from portfolioData object to DOM
+        function renderPortfolioData() {
+            // Text values
+            document.getElementById("hero-name-ar").innerText = portfolioData.nameArabic;
+            document.getElementById("hero-name-en").innerText = portfolioData.nameEnglish;
+            document.getElementById("hero-job").innerText = portfolioData.jobTitle;
+            document.getElementById("hero-bio").innerText = portfolioData.bio;
+            document.getElementById("about-heading").innerText = portfolioData.aboutHeading;
+            document.getElementById("about-text-1").innerText = portfolioData.aboutText1;
+            document.getElementById("about-text-2").innerText = portfolioData.aboutText2;
+            document.getElementById("about-image").src = portfolioData.profileImage;
+            document.getElementById("contact-email-text").innerText = portfolioData.email;
+
+            // Stats in Hero
+            const statsContainer = document.getElementById("hero-stats");
+            statsContainer.innerHTML = portfolioData.stats.map(stat => `
+                <div class="flex flex-col items-center">
+                    <span class="font-outfit text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">${stat.value}</span>
+                    <span class="text-gray-400 text-xs sm:text-sm mt-1">${stat.label}</span>
+                </div>
+            `).join('');
+
+            // Render Skills
+            const skillsContainer = document.getElementById("skills-grid");
+            skillsContainer.innerHTML = portfolioData.skills.map(skill => `
+                <div class="glass-card p-4 rounded-2xl flex items-center gap-3 hover:border-indigo-500/40 transition-all">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600/15 flex items-center justify-center text-indigo-400 shrink-0">
+                        <i class="${skill.icon} text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold text-white">${skill.name}</h4>
+                        <span class="text-[11px] text-gray-400">${skill.level}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Projects Cards
+            const projectsContainer = document.getElementById("projects-grid");
+            projectsContainer.innerHTML = portfolioData.projects.map(proj => `
+                <div class="glass-card rounded-3xl overflow-hidden flex flex-col justify-between group reveal-on-scroll">
+                    <div>
+                        <div class="relative h-52 overflow-hidden">
+                            <img src="${proj.image}" alt="${proj.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/800x500/12141d/ffffff?text=Project+Preview';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darker via-transparent to-transparent opacity-80"></div>
+                            <span class="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-dark/80 backdrop-blur-md text-indigo-300 border border-white/10">
+                                ${proj.category}
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors">${proj.title}</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">${proj.description}</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <a href="${proj.link}" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl glass-panel text-indigo-300 hover:text-white hover:bg-indigo-600 font-semibold text-xs transition-all flex items-center justify-center gap-2 group/btn">
+                            <span>عرض المشروع</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+
+            // Render Contact Cards
+            const contactGrid = document.getElementById("contact-links-grid");
+            const contactMethods = [
+                { title: "WhatsApp", icon: "fa-brands fa-whatsapp", color: "hover:text-emerald-400", link: portfolioData.whatsapp, label: "دردشة مباشرة" },
+                { title: "Facebook", icon: "fa-brands fa-facebook", color: "hover:text-blue-400", link: portfolioData.facebook, label: "الملف الشخصي" },
+                { title: "Instagram", icon: "fa-brands fa-instagram", color: "hover:text-pink-400", link: portfolioData.instagram, label: "المتابعة والمشاريع" },
+                { title: "Behance", icon: "fa-brands fa-behance", color: "hover:text-indigo-400", link: portfolioData.behance, label: "معرض الأعمال" }
+            ];
+
+            contactGrid.innerHTML = contactMethods.map(item => `
+                <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="glass-card p-6 rounded-2xl flex flex-col items-center text-center group ${item.color} transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-white text-2xl mb-3 group-hover:scale-110 transition-transform">
+                        <i class="${item.icon}"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-white mb-1">${item.title}</h4>
+                    <span class="text-xs text-gray-400">${item.label}</span>
+                </a>
+            `).join('');
+
+            // Render Footer Socials
+            const footerSocials = document.getElementById("footer-socials");
+            footerSocials.innerHTML = `
+                <a href="${portfolioData.whatsapp}" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="${portfolioData.facebook}" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                <a href="${portfolioData.instagram}" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="${portfolioData.behance}" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-behance"></i></a>
+            `;
+
+            // Copy Email Handler
+            document.getElementById("copy-email-btn").addEventListener("click", () => {
+                copyToClipboard(portfolioData.email);
+                showToast("تم نسخ البريد الإلكتروني بنجاح!");
+            });
+        }
+
+        // 2. Cinematic Page Loader Hide
+        function initLoader() {
+            const loader = document.getElementById("loader");
+            setTimeout(() => {
+                loader.classList.add("opacity-0");
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 700);
+            }, 600);
+        }
+
+        // 3. Custom Cursor Follower for Desktop
+        function initCustomCursor() {
+            const dot = document.getElementById("cursor-dot");
+            const outline = document.getElementById("cursor-outline");
+            
+            if (!dot || !outline) return;
+
+            window.addEventListener("mousemove", (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                dot.style.transform = `translate3d(${posX - 4}px, ${posY - 4}px, 0)`;
+                outline.style.transform = `translate3d(${posX - 18}px, ${posY - 18}px, 0)`;
+            });
+
+            // Scale effect on interactive elements hover
+            const interactiveElements = document.querySelectorAll("a, button, .glass-card");
+            interactiveElements.forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    outline.style.transform += " scale(1.5)";
+                    outline.style.borderColor = "rgba(99, 102, 241, 0.9)";
+                });
+                el.addEventListener("mouseleave", () => {
+                    outline.style.borderColor = "rgba(168, 85, 247, 0.6)";
+                });
+            });
+        }
+
+        // 4. Scroll Reveal Animations
+        function initScrollReveal() {
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll(".reveal-on-scroll").forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // 5. Mobile Drawer Toggle
+        function initMobileMenu() {
+            const btn = document.getElementById("mobile-menu-btn");
+            const drawer = document.getElementById("mobile-drawer");
+            const links = document.querySelectorAll(".mobile-nav-link");
+
+            btn.addEventListener("click", () => {
+                drawer.classList.toggle("hidden");
+            });
+
+            links.forEach(link => {
+                link.addEventListener("click", () => {
+                    drawer.classList.add("hidden");
+                });
+            });
+        }
+
+        // Helper: Toast Message Display
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            const toastMsg = document.getElementById("toast-message");
+            toastMsg.innerText = message;
+            toast.classList.remove("opacity-0", "pointer-events-none");
+            
+            setTimeout(() => {
+                toast.classList.add("opacity-0", "pointer-events-none");
+            }, 3000);
+        }
+
+        // Helper: Robust Fallback Clipboard Function
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text);
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-999999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                } catch (err) {
+                    console.error('Fallback copy failed', err);
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+    </script>
+</body>
+</html>
